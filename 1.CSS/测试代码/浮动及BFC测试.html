@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #wrapper {
+            height: 600px;
+            width: 600px;
+            border: 2px solid yellow;
+        }
+        /* #wrapper > div 的权重大于  #float-box */
+        #wrapper > div {
+            width: 300px;
+            height: 80px;
+            background-color: red;
+            margin: 5px;
+            /* border: 1rpx solid black; */
+        }
+        #wrapper #float-box {
+            float: left;
+            margin-right: -100px;
+            /* position: absolute; */
+            /* left: 40px; */
+            background-color: green;
+            width: 100px;
+        }
+        /* 开启bfc之后浮动元素也不能侵扰他 但是用margin负可以移动到覆盖他上面*/
+        /* 但是绝对定位可以覆盖在它上面 */
+        #wrapper #bfc {
+            overflow: hidden;
+        }
+    </style>
+</body>
+    <div id="wrapper">
+        <div></div>
+        <div id="float-box"></div>
+        <div id="bfc"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</html>
