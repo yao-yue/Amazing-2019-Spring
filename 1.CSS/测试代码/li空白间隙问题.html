@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;padding: 0;
+    }
+    #root {
+        
+    }
+    #ul-container {
+        box-sizing: border-box;
+        background-color: #ffffff;
+        font-size: 0;
+    }
+    #ul-container  > li {
+        /* font-size: 20px; */
+        font-size: 0;
+        /* height: 20px; */
+        background-color: green;
+    }
+    /* 字体设置为零是因为子节点li 是display:inline-block 会有默认大概3px的字间距，
+    这样两个li节点之间有空隙，设置为零没有，
+    然后在li节点上设置字体大小，如果直接在ul上设置字体让li节点继承就是这个效果看图 */
+    /* #li-show {
+        background-color: green;
+    } */
+
+
+    /* 解决方法： 
+    1。 ul设置font-size =0;在Li里面再设置font-size;
+    2.  不用尾部的</li》 
+    3. 负margin
+    */
+    </style>
+</head>
+<body>
+    <div id="root">
+        <ul id="ul-container">
+            <li id="li-show">1n</li>
+            <li id="li-show">2n</li>
+            <li id="li-show">3n</li>
+            <li id="li-show">4n</li>
+            <li id="li-show">5n</li>
+            <li id="li-show">6n</li>
+        </ul>
+    </div>
+</body>
+</html>
