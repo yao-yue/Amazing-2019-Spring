@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax</title>
+</head>
+    <!-- 手写一个AJAX 
+    1.初试化一个xhr
+    2.open
+    3.send    
+    4.监听onreadstatechange  监听状态readstate===4 status===200 -->
+<body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded',function() {
+            let xhr = null;
+            if(window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            }else {
+                xhr = new ActiveXObject('Mirosoft.XMLHTTP')
+            }
+            xhr.open('GET', url, true);
+            xhr.send()
+            xhr.onreadstatechange = function() {
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    console.log(xhr.responseText);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
