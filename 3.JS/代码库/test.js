@@ -26,3 +26,18 @@
 // }, {});
 
 // console.log(countNames)  // { tom: 2, jim: 1, jack: 2 }
+
+// let a = Object.prototype.toString.call(null)
+// let b = Object.prototype.toString.call([])
+
+// let a = + '1'
+
+// + '1' = 1
+//  + 'b' = Nan
+// console.log(a)
+// console.log(b)
+
+let a = 3 + '2019/1/1'
+
+// 加号规则 当一个
+console.log(a)
