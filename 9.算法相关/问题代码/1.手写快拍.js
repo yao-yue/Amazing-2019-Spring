@@ -14,12 +14,13 @@ let quickSort = (array, left, right) => {
 }
 
 let partation = (array, left, right) => {
+    //主元为中间的时候
     let pivot = array[Math.floor((right + left) / 2)], i = left, j = right;
     while (i <= j) {
-        while (array[i] < pivot) {
+        while (array[i] < pivot) {   //找到左边比主元大的元素
             i++;
         }
-        while (array[j] > pivot) {
+        while (array[j] > pivot) {   //找到右边比主元小的元素
             j--;
         }
         if (i <= j) {
