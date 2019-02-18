@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ajax</title>
 </head>
-  
-<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
+    .circle {
+        background-color: blue;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: #ffffff;
+    }
+</style>
+
+<body>
+    <div class="circle">
+        0
+    </div>
     <script>
-    //       <!-- 手写一个AJAX 
-    // 1.初试化一个xhr
-    // 2.open
-    // 3.send    
-    // 4.监听onreadstatechange  监听状态readstate===4 status===200 -->
+
+        //       <!-- 手写一个AJAX 
+        // 1.初试化一个xhr
+        // 2.open
+        // 3.send    
+        // 4.监听onreadstatechange  监听状态readstate===4 status===200 -->
         // document.addEventListener('DOMContentLoaded',function() {
         //     let xhr = null;
         //     if(window.XMLHttpRequest) {
@@ -31,7 +53,132 @@
         //     }
         // })
 
-      
+        //节流的本质  在某段时间内只认第一次，并在计时结束时执行响应
+        //   let count = 0;
+        //   function throttle(fn, interval) {
+        //       let last = 0;
+        //       return function() {
+        //           let self = this
+        //           let arg = arguments;
+        //           let now = +new Date();
+
+        //           //如果时间间隔大于我们设定的时间间隔阈值，就执行回调
+        //           if(now - last >= interval) {
+        //               last = now;
+        //               fn.apply(self, arg);
+        //           }
+        //       }
+        //   }
+        //   const fixed_click = throttle(() => {
+        //       console.log('触发了点击事件');
+        //       count ++;
+        //       document.querySelector('.circle').innerHTML = count;
+        //     }, 1000)
+        //     document.querySelector('.circle').addEventListener('click', fixed_click)
+
+
+        //防抖的本质   一段时间只认最后一次   把一段时间内的所有操作都聚焦于最后一次，每点一次都重新定义一个定时器
+        // let count = 0;
+        // function debounce(fn, delay) {
+        //     let timer = null;
+        //     return function() {
+        //         let self = this;
+        //         let arg = arguments;
+        //         let now = +new Date();
+
+        //         //每次触发都去除之前的旧定时器
+        //         if(timer) {
+        //             clearTimeout(timer)
+        //         }
+        //         timer = setTimeout(function() {
+        //             fn.apply(self, arg)
+        //         },delay)
+        //     }
+        // }
+        // const fixed_click = debounce(() => {
+        //       console.log('触发了点击事件');
+        //       count ++;
+        //       document.querySelector('.circle').innerHTML = count;
+        //     }, 1000)
+        //     document.querySelector('.circle').addEventListener('click', fixed_click)
+
+
+        // 改良版本
+        // 如果用户一直频繁点击，这样会一直得不到响应，给用户带来糟糕的体验，于是我们需要结合throttle和debounce
+        // 给用户一个有底线的debounce
+        // let count = 0;
+        // function strongThrottle(fn, delay) {
+        //     let last =0,timer = null;
+        //     return function() {
+        //         let self = this;
+        //         let args = arguments;
+        //         let now = +new Date();
+
+        //        // 判断上次触发的时间和本次触发的时间差是否小于时间间隔的阈值
+        //         if(now - last < delay) {
+        //             // if(timer) {
+        //             //     clearTimeout(timer)
+        //             // }
+        //             // console.log(now)
+        //             // console.log(last)
+        //             // 进入防抖
+        //             console.log('进入防抖')
+        //             clearTimeout(timer)
+        //             timer = setTimeout(() => {
+        //                 last = now;
+        //                 fn.apply(self, args)
+        //             },delay)
+        //         }else {
+        //             //这个时候时间间隔已经超出了我们设定的延迟所以我们不等了直接执行
+        //             // 进入节流
+        //             console.log('进入节流')
+        //             last = now;
+        //             fn.apply(self, args)
+        //         }
+        //     }
+        // }
+
+
+
+        // 再写一遍
+        // 节流 只认第一次，第一次点击后开始计时，在一段一时间内的点击只响应一次。
+        // let count = 0;
+        // function throttle(fn, delay) {
+        //     let last = 0;
+        //     return function () {
+        //         let self = this;
+        //         let arg = arguments;
+        //         let now = +new Date();
+
+        //         console.log(last);
+        //         //如果时间间隔大于延迟,就执行他
+        //         if (now - last > delay) {
+        //             last = now;    //为了下一次点击的时候的计时  这里的闭包会可以保存last这个变量
+        //             fn.apply(self, arg);
+        //         }
+        //     }
+        // }
+        // function debounce(fn, delay) {
+        //     let timer = null;
+        //     return function () {
+        //         let self = this;
+        //         let arg = arguments;
+        //         // let now = + new Date();
+        //         if (timer) {
+        //             clearTimeout(timer)
+        //         }
+        //         timer = setTimeout(function () {
+        //             fn.apply(self, arg)
+        //         }, delay)
+        //     }
+
+        // }
+        // const fixed_click = throttle(() => {
+        //     count++;
+        //     document.querySelector('.circle').innerHTML = count;
+        // }, 2000)
+        // document.querySelector('.circle').addEventListener('click', fixed_click)
     </script>
 </body>
+
 </html>
