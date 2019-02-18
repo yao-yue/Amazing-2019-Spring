@@ -131,3 +131,62 @@
 // m 多行匹配，即在到达一行文本末尾时还会继续寻常下一行中是否与正则匹配的项
 
 // 字符串的方法 split
+
+//科学计数法
+// var str4 = "100000000000.00";
+// let arr = str4.split('.')
+// console.log(arr)
+// var reg1 = /(?=((\B)(\w{3})*)$)/g;
+// var s4 = str4.replace(reg1,",");
+// let res = arr[0].replace(reg1, ',')+'.'+arr[1]
+// console.log(res)
+// console.log(s4)
+
+
+// 找到字符串中相同的最大的串并输出
+// let a = 'ababbaaaabababbccccccddddddccbAAAABBBB';
+// let reg = /(\w)\1+/ig;
+// let sortedA = a.toLocaleLowerCase().split('').sort().join('');
+// console.log(sortedA)
+// let maxStr = '';
+// let maxLen = 0;
+// sortedA.replace(reg, function($0,$1) {
+//     console.log($0);
+//     console.log($1);
+//     let regLen = $0.length;
+//     if(regLen > maxLen) {
+//         maxLen = regLen;
+//         maxStr = $1;
+//     }else if(maxLen == regLen){
+//         maxStr += $1;
+//     }
+//     return 0
+// })  
+// console.log(sortedA)
+// console.log(maxLen,maxStr)
+
+// var str = "the-first-name";
+// var reg = /-(\w)/g;
+// str.replace(reg,function($0,$1,$2,$3) {
+//     console.log($0)
+//     console.log($1)
+//     // console.log($2)    //index: 捕获开始位置的索引   如果捕获的为零时，下次从头开始捕获
+//     // console.log($3)
+//     // return $1.toUpperCase();
+//     // lastIndex ：这个属性记录的就是下一次捕获从哪个索引开始
+//     //   "-01" : 正则捕获到的内容
+//     // "01"  : 捕获到的字符串中的小分组中的内容
+// });
+// console.log(str.match(reg));
+// console.log(reg.exec(str))
+
+// ?是0次到1次     解决贪婪性？
+// +只捕获一次,一次尽可能多的捕获   \d+  ==》 123     解决懒惰性g
+// var str = '2017-01-06';
+// str = str.replace(/-(\d)/g,function($0,$1,$2){
+//     console.log($0,$1,$2)   //这些都是参数里面的内容
+//     console.log(arguments)
+// })
+// ["-01", "01", 4, "2017-01-06"]
+// ["-06", "06", 7, "2017-01-06"]
+// "2017undefinedundefined"
