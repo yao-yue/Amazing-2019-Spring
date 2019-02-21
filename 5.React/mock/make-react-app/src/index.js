@@ -4,14 +4,10 @@ import ReactDOM from 'react-dom'
 import Header from './Header'
 import Content from './Content'
 import './index.css'
+import {Provider} from './react-redux'
 
 export default class Index extends Component {
-    static childContextTypes = {    //把store放在Index的context里面，这样每个子组件都可以取到store
-        store: PropTypes.object
-    }
-    getChildContext () {
-        return { store }
-      }
+    
   render() {
     return (
       <div>
@@ -52,4 +48,4 @@ const themeReducer = (state, action) => {
 }
 const store = createStore(themeReducer);
 
-ReactDOM.render(<Index />, document.getElementById('root'))
+ReactDOM.render(<Provider store={store}><Index /></Provider>, document.getElementById('root'))
