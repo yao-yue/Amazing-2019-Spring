@@ -191,12 +191,12 @@
 // ["-06", "06", 7, "2017-01-06"]
 // "2017undefinedundefined"
 
-let str = "I like beijing.";
-function order(str) {
-    let res = str.split(' ').map(item => item.split('').reverse().join(''));
+// let str = "I like beijing.";
+// function order(str) {
+//     let res = str.split(' ').map(item => item.split('').reverse().join(''));
 
-    let end =   res.reverse().map(item => item.split('').reverse().join(''));
-    return end.join(' ')
-}
+//     let end =   res.reverse().map(item => item.split('').reverse().join(''));
+//     return end.join(' ')
+// }
 
-console.log(end.join(' '))
+// console.log(end.join(' '))
